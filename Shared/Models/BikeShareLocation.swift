@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct BikeShareLocation: Codable, Equatable {
+    let city: String
+    let country: String
+    let latitude: Double
+    let longitude: Double
+}

@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+protocol BikeShareService {
+    typealias BikeListResponse = Result<BikeShareCityResponse, Error>
+
+    func fetchBikes() async -> BikeListResponse
+}

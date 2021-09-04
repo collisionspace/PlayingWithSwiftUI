@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0641260326E340400088C116 /* MapFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641260226E340400088C116 /* MapFactory.swift */; };
+		0641260626E35D5E0088C116 /* QuadTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641260526E35D5E0088C116 /* QuadTree.swift */; };
 		0641585D26C786290026A57A /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641585C26C786290026A57A /* Tests_iOS.swift */; };
 		0641585F26C786290026A57A /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641585E26C786290026A57A /* Tests_iOSLaunchTests.swift */; };
 		0641586926C7862A0026A57A /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641586826C7862A0026A57A /* Tests_macOS.swift */; };
@@ -17,6 +19,20 @@
 		0641586F26C7862A0026A57A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641584726C786270026A57A /* ContentView.swift */; };
 		0641587026C7862A0026A57A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0641584826C786290026A57A /* Assets.xcassets */; };
 		0641587126C7862A0026A57A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0641584826C786290026A57A /* Assets.xcassets */; };
+		0641588126C78A0A0026A57A /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641588026C78A0A0026A57A /* Networking.swift */; };
+		0641588226C78A0A0026A57A /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641588026C78A0A0026A57A /* Networking.swift */; };
+		0641588526C78F750026A57A /* BikeShareCityResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641588426C78F750026A57A /* BikeShareCityResponse.swift */; };
+		0641588626C78F750026A57A /* BikeShareCityResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641588426C78F750026A57A /* BikeShareCityResponse.swift */; };
+		0641588826C78F8A0026A57A /* BikeShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641588726C78F8A0026A57A /* BikeShare.swift */; };
+		0641588926C78F8A0026A57A /* BikeShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641588726C78F8A0026A57A /* BikeShare.swift */; };
+		0641588B26C78FAE0026A57A /* BikeShareLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641588A26C78FAE0026A57A /* BikeShareLocation.swift */; };
+		0641588C26C78FAE0026A57A /* BikeShareLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641588A26C78FAE0026A57A /* BikeShareLocation.swift */; };
+		069D03C826C793FD001BF8D5 /* BikeShareMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D03C726C793FD001BF8D5 /* BikeShareMap.swift */; };
+		069D03CD26C79853001BF8D5 /* BikeShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D03CC26C79853001BF8D5 /* BikeShareService.swift */; };
+		069D03CF26C79867001BF8D5 /* BikeShareWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D03CE26C79867001BF8D5 /* BikeShareWorker.swift */; };
+		069D03D426C7D7E0001BF8D5 /* ModalSheetExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D03D326C7D7E0001BF8D5 /* ModalSheetExample.swift */; };
+		069D03D626C7E1DD001BF8D5 /* ModalSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D03D526C7E1DD001BF8D5 /* ModalSheet.swift */; };
+		069D03D826C7EDA2001BF8D5 /* BikeShareRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D03D726C7EDA2001BF8D5 /* BikeShareRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0641260226E340400088C116 /* MapFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFactory.swift; sourceTree = "<group>"; };
+		0641260526E35D5E0088C116 /* QuadTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadTree.swift; sourceTree = "<group>"; };
 		0641584626C786270026A57A /* PlayingWithExamplesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingWithExamplesApp.swift; sourceTree = "<group>"; };
 		0641584726C786270026A57A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0641584826C786290026A57A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -48,6 +66,16 @@
 		0641586426C786290026A57A /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0641586826C7862A0026A57A /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		0641586A26C7862A0026A57A /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		0641588026C78A0A0026A57A /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		0641588426C78F750026A57A /* BikeShareCityResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeShareCityResponse.swift; sourceTree = "<group>"; };
+		0641588726C78F8A0026A57A /* BikeShare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeShare.swift; sourceTree = "<group>"; };
+		0641588A26C78FAE0026A57A /* BikeShareLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeShareLocation.swift; sourceTree = "<group>"; };
+		069D03C726C793FD001BF8D5 /* BikeShareMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeShareMap.swift; sourceTree = "<group>"; };
+		069D03CC26C79853001BF8D5 /* BikeShareService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeShareService.swift; sourceTree = "<group>"; };
+		069D03CE26C79867001BF8D5 /* BikeShareWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeShareWorker.swift; sourceTree = "<group>"; };
+		069D03D326C7D7E0001BF8D5 /* ModalSheetExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalSheetExample.swift; sourceTree = "<group>"; };
+		069D03D526C7E1DD001BF8D5 /* ModalSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalSheet.swift; sourceTree = "<group>"; };
+		069D03D726C7EDA2001BF8D5 /* BikeShareRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeShareRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +110,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0641260426E35D530088C116 /* Data Structures */ = {
+			isa = PBXGroup;
+			children = (
+				0641260526E35D5E0088C116 /* QuadTree.swift */,
+			);
+			path = "Data Structures";
+			sourceTree = "<group>";
+		};
 		0641584026C786270026A57A = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +133,13 @@
 			children = (
 				0641584626C786270026A57A /* PlayingWithExamplesApp.swift */,
 				0641584726C786270026A57A /* ContentView.swift */,
+				069D03D726C7EDA2001BF8D5 /* BikeShareRepository.swift */,
+				0641260426E35D530088C116 /* Data Structures */,
+				069D03D026C7D7BC001BF8D5 /* Sheet Modal */,
+				069D03CA26C7983D001BF8D5 /* Worker */,
+				069D03C926C7941B001BF8D5 /* Networking */,
+				069D03C626C793F3001BF8D5 /* Map */,
+				0641588326C78F6B0026A57A /* Models */,
 				0641584826C786290026A57A /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -129,6 +172,59 @@
 				0641586A26C7862A0026A57A /* Tests_macOSLaunchTests.swift */,
 			);
 			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+		0641588326C78F6B0026A57A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0641588426C78F750026A57A /* BikeShareCityResponse.swift */,
+				0641588726C78F8A0026A57A /* BikeShare.swift */,
+				0641588A26C78FAE0026A57A /* BikeShareLocation.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		069D03C626C793F3001BF8D5 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				069D03C726C793FD001BF8D5 /* BikeShareMap.swift */,
+				0641260226E340400088C116 /* MapFactory.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		069D03C926C7941B001BF8D5 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				0641588026C78A0A0026A57A /* Networking.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		069D03CA26C7983D001BF8D5 /* Worker */ = {
+			isa = PBXGroup;
+			children = (
+				069D03CB26C79848001BF8D5 /* Service */,
+				069D03CE26C79867001BF8D5 /* BikeShareWorker.swift */,
+			);
+			path = Worker;
+			sourceTree = "<group>";
+		};
+		069D03CB26C79848001BF8D5 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				069D03CC26C79853001BF8D5 /* BikeShareService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		069D03D026C7D7BC001BF8D5 /* Sheet Modal */ = {
+			isa = PBXGroup;
+			children = (
+				069D03D326C7D7E0001BF8D5 /* ModalSheetExample.swift */,
+				069D03D526C7E1DD001BF8D5 /* ModalSheet.swift */,
+			);
+			path = "Sheet Modal";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,7 +385,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				069D03CD26C79853001BF8D5 /* BikeShareService.swift in Sources */,
+				0641588526C78F750026A57A /* BikeShareCityResponse.swift in Sources */,
+				0641260626E35D5E0088C116 /* QuadTree.swift in Sources */,
+				0641588126C78A0A0026A57A /* Networking.swift in Sources */,
+				0641260326E340400088C116 /* MapFactory.swift in Sources */,
+				069D03D426C7D7E0001BF8D5 /* ModalSheetExample.swift in Sources */,
 				0641586E26C7862A0026A57A /* ContentView.swift in Sources */,
+				0641588B26C78FAE0026A57A /* BikeShareLocation.swift in Sources */,
+				069D03D826C7EDA2001BF8D5 /* BikeShareRepository.swift in Sources */,
+				069D03CF26C79867001BF8D5 /* BikeShareWorker.swift in Sources */,
+				0641588826C78F8A0026A57A /* BikeShare.swift in Sources */,
+				069D03D626C7E1DD001BF8D5 /* ModalSheet.swift in Sources */,
+				069D03C826C793FD001BF8D5 /* BikeShareMap.swift in Sources */,
 				0641586C26C7862A0026A57A /* PlayingWithExamplesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,7 +406,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0641588626C78F750026A57A /* BikeShareCityResponse.swift in Sources */,
+				0641588226C78A0A0026A57A /* Networking.swift in Sources */,
 				0641586F26C7862A0026A57A /* ContentView.swift in Sources */,
+				0641588C26C78FAE0026A57A /* BikeShareLocation.swift in Sources */,
+				0641588926C78F8A0026A57A /* BikeShare.swift in Sources */,
 				0641586D26C7862A0026A57A /* PlayingWithExamplesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -462,7 +574,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -491,7 +603,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -524,7 +636,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = daniel.PlayingWithExamples;
 				PRODUCT_NAME = PlayingWithExamples;
@@ -551,7 +663,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = daniel.PlayingWithExamples;
 				PRODUCT_NAME = PlayingWithExamples;

@@ -44,7 +44,6 @@ final class Networking {
         } catch {
             return .failure(error)
         }
-
     }
 
 
