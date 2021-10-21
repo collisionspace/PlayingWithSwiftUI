@@ -27,7 +27,7 @@ struct ClusterableAnnotation: Annotatable {
         self.id = UUID()
         self.title = clusterable.title
         self.point = clusterable.point
-        self.iconName = clusterable.iconName
+        self.iconName = nil
     }
     
     var mapPoint: MapPoint {
