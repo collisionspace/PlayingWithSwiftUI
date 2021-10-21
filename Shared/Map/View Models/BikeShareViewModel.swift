@@ -25,9 +25,14 @@ final class BikeShareViewModel: ObservableObject {
     private var minLongitude = 0.0
     private var maxLongitude = 0.0
     private var shouldCheck = true
-    var backgroundQueue = OperationQueue()
-    var mainQueue = OperationQueue.main
-    
+    private lazy var backgroundQueue: OperationQueue = {
+        let queue = OperationQueue()
+        queue.maxConcurrentOperationCount = 1
+        return queue
+    }()
+
+    private var mainQueue = OperationQueue.main
+
     init(cities: [City]) {
         let annotations = cities.map { Annotation(title: $0.name, point: MapCoordinate(clCoordinate: $0.coordinate)) }
         self.annotations = annotations
@@ -63,8 +68,6 @@ final class BikeShareViewModel: ObservableObject {
         
         var objectArray = [ClusteredAnnotation]()
         
-        backgroundQueue.maxConcurrentOperationCount = 1
-        
         let operationBlock = BlockOperation { [unowned self] in
             for item in array {
                 self.quadTree.insert(item, checkMinMax: self.shouldCheck)
@@ -78,8 +81,8 @@ final class BikeShareViewModel: ObservableObject {
                 self.shouldCheck = false
             }
             
-            let coordinateNE = CLLocationCoordinate2DMake(self.maxLatitude, self.maxLongitude)
-            let coordinateSW = CLLocationCoordinate2DMake(self.minLatitude, self.minLongitude)
+            let coordinateNE = CLLocationCoordinate2D(latitude: self.maxLatitude, longitude: self.maxLongitude)
+            let coordinateSW = CLLocationCoordinate2D(latitude: self.minLatitude, longitude: self.minLongitude)
             
             objectArray = self.clusteredAnnotationsWithinMapRect(
                 self.quadTree,
@@ -95,7 +98,8 @@ final class BikeShareViewModel: ObservableObject {
                 ClusteredAnnotation(
                     title: item.title,
                     point: item.point,
-                    clusterCount: item.clusterCount, image:  UIImage(systemName: "00.circle.fill")!
+                    clusterCount: item.clusterCount,
+                    image:  UIImage(systemName: "00.circle.fill")!
                 )
             }
         }
@@ -119,14 +123,14 @@ final class BikeShareViewModel: ObservableObject {
             coordinateAreaSize = 1
         }
         
-        var i = minLong
-        while i < maxLong + coordinateAreaSize {
+        var x = minLong
+        while x < maxLong + coordinateAreaSize {
             
-            var j = minLat
-            while j < maxLat + coordinateAreaSize {
+            var y = minLat
+            while y < maxLat + coordinateAreaSize {
                 
-                let northEastCoord: CLLocationCoordinate2D = CLLocationCoordinate2DMake(j + coordinateAreaSize, i + coordinateAreaSize)
-                let southWestCoord: CLLocationCoordinate2D = CLLocationCoordinate2DMake(j, i)
+                let northEastCoord = CLLocationCoordinate2D(latitude: y + coordinateAreaSize, longitude: x + coordinateAreaSize)
+                let southWestCoord = CLLocationCoordinate2D(latitude: y, longitude: x)
 
                 //An area within the boundary to cluster
                 let areaBox: BoundingBox = quadTree.boundingBoxForCoordinates(northEastCoord, southWestCoord: southWestCoord)
@@ -151,7 +155,11 @@ final class BikeShareViewModel: ObservableObject {
                         longitude: CLLocationDegrees(totalLongitude) / CLLocationDegrees(count)
                     )
                     
-                    let cluster = ClusteredAnnotation(title: "Marker Count: \(count)", point: MapCoordinate(clCoordinate: coordinate), clusterCount: count)
+                    let cluster = ClusteredAnnotation(
+                        title: "Marker Count: \(count)",
+                        point: MapCoordinate(clCoordinate: coordinate),
+                        clusterCount: count
+                    )
                     clusteredMapMarkers.append(cluster)
                 } else {
                     clusteredMapMarkers.append(contentsOf: mapMarkers.map { ClusteredAnnotation(
@@ -162,10 +170,10 @@ final class BikeShareViewModel: ObservableObject {
                     })
                 }
                 
-                j += coordinateAreaSize
+                y += coordinateAreaSize
             }
             
-            i += coordinateAreaSize
+            x += coordinateAreaSize
         }
         
         return clusteredMapMarkers
