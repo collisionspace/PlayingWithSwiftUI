@@ -20,6 +20,13 @@ struct Annotation: Annotatable {
         self.iconName = iconName
     }
 
+    init(clusterable: Clusterable) {
+        self.id = UUID()
+        self.title = clusterable.title
+        self.point = clusterable.point
+        self.iconName = nil
+    }
+
     var mapPoint: MapPoint {
         MapPoint(x: point.x, y: point.y)
     }

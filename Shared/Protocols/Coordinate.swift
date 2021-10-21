@@ -15,19 +15,3 @@ protocol Coordinate {
     var x: CGFloat { get }
     var y: CGFloat { get }
 }
-
-import CoreLocation
-
-struct MapCoordinate: Coordinate {
-    let x: CGFloat
-    let y: CGFloat
-
-    static let zero = MapCoordinate(x: .zero, y: .zero)
-}
-
-extension MapCoordinate {
-    init(clCoordinate: CLLocationCoordinate2D) {
-        self.x = clCoordinate.longitude
-        self.y = clCoordinate.latitude
-    }
-}

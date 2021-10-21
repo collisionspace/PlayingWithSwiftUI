@@ -7,6 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		063906CD27221787007D2F41 /* MapCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063906CC27221787007D2F41 /* MapCoordinate.swift */; };
+		063906CE27221788007D2F41 /* MapCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063906CC27221787007D2F41 /* MapCoordinate.swift */; };
+		063906D127221A2D007D2F41 /* MapPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063906D027221A2D007D2F41 /* MapPoint.swift */; };
+		063906D227221A2D007D2F41 /* MapPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063906D027221A2D007D2F41 /* MapPoint.swift */; };
+		063906D427221A4C007D2F41 /* MapSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063906D327221A4C007D2F41 /* MapSize.swift */; };
+		063906D527221A4C007D2F41 /* MapSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063906D327221A4C007D2F41 /* MapSize.swift */; };
+		063906D727221A65007D2F41 /* MapRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063906D627221A65007D2F41 /* MapRect.swift */; };
+		063906D827221A65007D2F41 /* MapRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063906D627221A65007D2F41 /* MapRect.swift */; };
+		063906DA27221AB2007D2F41 /* MapCoordinateRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063906D927221AB2007D2F41 /* MapCoordinateRegion.swift */; };
+		063906DB27221AB2007D2F41 /* MapCoordinateRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063906D927221AB2007D2F41 /* MapCoordinateRegion.swift */; };
+		063906DD27221AD3007D2F41 /* MapSpan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063906DC27221AD3007D2F41 /* MapSpan.swift */; };
+		063906DE27221AD3007D2F41 /* MapSpan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063906DC27221AD3007D2F41 /* MapSpan.swift */; };
+		063906E027221AEF007D2F41 /* MapKit+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063906DF27221AEF007D2F41 /* MapKit+Extensions.swift */; };
+		063906E127221AEF007D2F41 /* MapKit+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063906DF27221AEF007D2F41 /* MapKit+Extensions.swift */; };
+		063906E327221C20007D2F41 /* Clustered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063906E227221C20007D2F41 /* Clustered.swift */; };
+		063906E427221C20007D2F41 /* Clustered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063906E227221C20007D2F41 /* Clustered.swift */; };
+		063906E627221C4F007D2F41 /* ClusteredAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063906E527221C4F007D2F41 /* ClusteredAnnotation.swift */; };
+		063906E727221C4F007D2F41 /* ClusteredAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063906E527221C4F007D2F41 /* ClusteredAnnotation.swift */; };
 		0641260326E340400088C116 /* MapFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641260226E340400088C116 /* MapFactory.swift */; };
 		0641260626E35D5E0088C116 /* QuadTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641260526E35D5E0088C116 /* QuadTree.swift */; };
 		0641260926E37EA80088C116 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641260826E37EA80088C116 /* Endpoint.swift */; };
@@ -60,6 +78,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		063906CC27221787007D2F41 /* MapCoordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinate.swift; sourceTree = "<group>"; };
+		063906D027221A2D007D2F41 /* MapPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPoint.swift; sourceTree = "<group>"; };
+		063906D327221A4C007D2F41 /* MapSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSize.swift; sourceTree = "<group>"; };
+		063906D627221A65007D2F41 /* MapRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRect.swift; sourceTree = "<group>"; };
+		063906D927221AB2007D2F41 /* MapCoordinateRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinateRegion.swift; sourceTree = "<group>"; };
+		063906DC27221AD3007D2F41 /* MapSpan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSpan.swift; sourceTree = "<group>"; };
+		063906DF27221AEF007D2F41 /* MapKit+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapKit+Extensions.swift"; sourceTree = "<group>"; };
+		063906E227221C20007D2F41 /* Clustered.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clustered.swift; sourceTree = "<group>"; };
+		063906E527221C4F007D2F41 /* ClusteredAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusteredAnnotation.swift; sourceTree = "<group>"; };
 		0641260226E340400088C116 /* MapFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFactory.swift; sourceTree = "<group>"; };
 		0641260526E35D5E0088C116 /* QuadTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadTree.swift; sourceTree = "<group>"; };
 		0641260826E37EA80088C116 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -124,6 +151,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		063906CF272217B5007D2F41 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				063906CC27221787007D2F41 /* MapCoordinate.swift */,
+				063906D327221A4C007D2F41 /* MapSize.swift */,
+				063906D027221A2D007D2F41 /* MapPoint.swift */,
+				063906D927221AB2007D2F41 /* MapCoordinateRegion.swift */,
+				063906D627221A65007D2F41 /* MapRect.swift */,
+				063906DC27221AD3007D2F41 /* MapSpan.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		0641260426E35D530088C116 /* Data Structures */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				0641260826E37EA80088C116 /* Endpoint.swift */,
+				063906DF27221AEF007D2F41 /* MapKit+Extensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -144,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				0641260F26E3C7C40088C116 /* Coordinate.swift */,
+				063906E227221C20007D2F41 /* Clustered.swift */,
 				0641261126E3C7CF0088C116 /* Plottable.swift */,
 			);
 			path = Protocols;
@@ -218,8 +260,10 @@
 		0641588326C78F6B0026A57A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				063906CF272217B5007D2F41 /* Map */,
 				0641588426C78F750026A57A /* BikeShareCityResponse.swift */,
 				0641261426E3C8DC0088C116 /* Annotation.swift */,
+				063906E527221C4F007D2F41 /* ClusteredAnnotation.swift */,
 				0641588726C78F8A0026A57A /* BikeShare.swift */,
 				0641588A26C78FAE0026A57A /* BikeShareLocation.swift */,
 			);
@@ -430,15 +474,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				063906D127221A2D007D2F41 /* MapPoint.swift in Sources */,
+				063906CD27221787007D2F41 /* MapCoordinate.swift in Sources */,
 				069D03CD26C79853001BF8D5 /* BikeShareService.swift in Sources */,
 				0641588526C78F750026A57A /* BikeShareCityResponse.swift in Sources */,
 				0641260626E35D5E0088C116 /* QuadTree.swift in Sources */,
 				0641588126C78A0A0026A57A /* Networking.swift in Sources */,
 				0641260926E37EA80088C116 /* Endpoint.swift in Sources */,
 				0641261026E3C7C40088C116 /* Coordinate.swift in Sources */,
+				063906E327221C20007D2F41 /* Clustered.swift in Sources */,
 				0641261526E3C8DC0088C116 /* Annotation.swift in Sources */,
+				063906DD27221AD3007D2F41 /* MapSpan.swift in Sources */,
+				063906D427221A4C007D2F41 /* MapSize.swift in Sources */,
+				063906E627221C4F007D2F41 /* ClusteredAnnotation.swift in Sources */,
 				0641260326E340400088C116 /* MapFactory.swift in Sources */,
 				069D03D426C7D7E0001BF8D5 /* ModalSheetExample.swift in Sources */,
+				063906D727221A65007D2F41 /* MapRect.swift in Sources */,
 				0641586E26C7862A0026A57A /* ContentView.swift in Sources */,
 				0641588B26C78FAE0026A57A /* BikeShareLocation.swift in Sources */,
 				069D03D826C7EDA2001BF8D5 /* BikeShareRepository.swift in Sources */,
@@ -448,6 +499,8 @@
 				0641260B26E37FDE0088C116 /* EndpointUrls.swift in Sources */,
 				069D03C826C793FD001BF8D5 /* BikeShareMap.swift in Sources */,
 				0641260D26E37FEF0088C116 /* RequestError.swift in Sources */,
+				063906E027221AEF007D2F41 /* MapKit+Extensions.swift in Sources */,
+				063906DA27221AB2007D2F41 /* MapCoordinateRegion.swift in Sources */,
 				0641586C26C7862A0026A57A /* PlayingWithExamplesApp.swift in Sources */,
 				0641261826E46E920088C116 /* BikeShareViewModel.swift in Sources */,
 				0641261226E3C7CF0088C116 /* Plottable.swift in Sources */,
@@ -458,11 +511,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				063906DE27221AD3007D2F41 /* MapSpan.swift in Sources */,
 				0641588626C78F750026A57A /* BikeShareCityResponse.swift in Sources */,
+				063906D227221A2D007D2F41 /* MapPoint.swift in Sources */,
+				063906D827221A65007D2F41 /* MapRect.swift in Sources */,
+				063906CE27221788007D2F41 /* MapCoordinate.swift in Sources */,
+				063906D527221A4C007D2F41 /* MapSize.swift in Sources */,
+				063906E127221AEF007D2F41 /* MapKit+Extensions.swift in Sources */,
 				0641588226C78A0A0026A57A /* Networking.swift in Sources */,
 				0641586F26C7862A0026A57A /* ContentView.swift in Sources */,
 				0641588C26C78FAE0026A57A /* BikeShareLocation.swift in Sources */,
 				0641588926C78F8A0026A57A /* BikeShare.swift in Sources */,
+				063906E427221C20007D2F41 /* Clustered.swift in Sources */,
+				063906E727221C4F007D2F41 /* ClusteredAnnotation.swift in Sources */,
+				063906DB27221AB2007D2F41 /* MapCoordinateRegion.swift in Sources */,
 				0641586D26C7862A0026A57A /* PlayingWithExamplesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
