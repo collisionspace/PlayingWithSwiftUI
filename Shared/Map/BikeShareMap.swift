@@ -8,42 +8,28 @@
 import SwiftUI
 import MapKit
 
-final class BikeShareViewModel: ObservableObject {
-
-    @Published var rect: MapRect = .zero
-    @Published var annotations = [BikeShareAnnotation]()
-
-    init(annotations: [BikeShareAnnotation]) {
-        self.annotations = annotations
-    }
-
-    var visibleAnnotationItems: [BikeShareAnnotation] {
-        annotations.filter({ annotation in
-            rect.contains(annotation.mapPoint)
-        })
-    }
-}
-
 struct BikeShareMap: View {
 
     @ObservedObject private var model: BikeShareViewModel
+    private let mapProvider: MapFactory.MapProvider
 
-    init(annotations: Binding<[BikeShareAnnotation]>) {
-        self.model = BikeShareViewModel(annotations: annotations.wrappedValue)
+    init(cities: Binding<[City]>, mapProvider: MapFactory.MapProvider = .apple) {
+        self.model = BikeShareViewModel(cities: cities.wrappedValue)
+        self.mapProvider = mapProvider
     }
 
     var body: some View {
         MapFactory.createView(
-            provider: .apple,
+            provider: mapProvider,
             mapRect: $model.rect,
-            visibleAnnotationItems: model.visibleAnnotationItems
+            visibleAnnotationItems: $model.visibleItems
         )
     }
 }
 
 struct BikeShareMap_Previews: PreviewProvider {
     static var previews: some View {
-        BikeShareMap(annotations: .constant([]))
+        BikeShareMap(cities: .constant([]))
     }
 }
 

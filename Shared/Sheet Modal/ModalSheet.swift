@@ -47,9 +47,11 @@ private struct ModalSheetHelper<SheetView: View>: UIViewControllerRepresentable 
     }
 
     func makeUIViewController(context: Context) -> HostingParentController<SheetView> {
-        let viewController = HostingParentController(rootView: sheetView, detents: detents, delegate: context.coordinator)
-//        viewController.hostingController.presentationController?.delegate = context.coordinator
-        return viewController
+        HostingParentController(
+            rootView: sheetView,
+            detents: detents,
+            delegate: context.coordinator
+        )
     }
 
     func updateUIViewController(_ viewController: HostingParentController<SheetView>, context: Context) {
@@ -107,12 +109,11 @@ private final class HostingParentController<Content: View>: UIViewController {
         if isShown {
             hostingController.rootView = rootView
         } else {
-            self.hostingController = CustomSheetHostingController(
+            hostingController = CustomSheetHostingController(
                 rootView: rootView,
                 detents: detents
             )
             hostingController.presentationController?.delegate = delegate
-//            hostingController.presentationController?.delegate = delegate
         }
     }
 

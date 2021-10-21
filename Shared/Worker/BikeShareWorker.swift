@@ -7,18 +7,16 @@
 
 import Foundation
 
-final class BikeShareWorker: BikeShareService {
+private extension String {
+    static let bikeNetworks = "/v2/networks"
+}
 
-    // Url has been broken out into pieces
-    private var urlComponents: URLComponents {
-        var urlComponents = URLComponents()
-        urlComponents.scheme = "https"
-        urlComponents.host = "api.citybik.es"
-        urlComponents.path = "/v2/networks"
-        return urlComponents
-    }
+struct BikeShareWorker: BikeShareService {
+
+    @Endpoint(.cityBikesBaseEndpoint, path: .bikeNetworks)
+    private var endpoint: URLComponents
 
     func fetchBikes() async -> BikeListResponse {
-        await Networking.request(url: urlComponents.url)
+        await Networking.request(url: endpoint.url)
     }
 }

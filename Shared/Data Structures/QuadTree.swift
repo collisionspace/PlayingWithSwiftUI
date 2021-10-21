@@ -9,20 +9,8 @@ import Foundation
 import CoreLocation
 import CoreGraphics
 
-// X and Y represents any point so thusly
-// X can be longitude
-// Y can be latitude
-protocol Coordinate {
-    var x: CGFloat { get }
-    var y: CGFloat { get }
-}
-
-protocol Clusterable {
-    var point: Coordinate { get }
-}
-
 final class QuadTree {
-    let nodeCapacity = 25
+    let nodeCapacity = 4
 
     var objects: [Clusterable] = []
 
@@ -46,20 +34,17 @@ final class QuadTree {
     }
 
     @discardableResult
-    func insertObject(_ object: Clusterable, atPoint point: CLLocationCoordinate2D, checkMinMax: Bool) -> Bool {
-        // TODO: Probably not needed from the looks of wiki algo
+    func insert(_ object: Clusterable, checkMinMax: Bool) -> Bool {
         if checkMinMax {
             if object.point.y > maxLat {
                 maxLat = object.point.y
-            }
-            else if object.point.y < minLat{
+            } else if object.point.y < minLat {
                 minLat = object.point.y
             }
 
             if object.point.x > maxLong {
                 maxLong = object.point.x
-            }
-            else if object.point.x < minLong {
+            } else if object.point.x < minLong {
                 minLong = object.point.x
             }
         }
@@ -78,13 +63,13 @@ final class QuadTree {
             subdivide()
         }
         
-        if let northWest = northWest, northWest.insertObject(object, atPoint: point, checkMinMax: checkMinMax) {
+        if let northWest = northWest, northWest.insert(object, checkMinMax: checkMinMax) {
             return true
-        } else if let northEast = northEast, northEast.insertObject(object, atPoint: point, checkMinMax: checkMinMax) {
+        } else if let northEast = northEast, northEast.insert(object, checkMinMax: checkMinMax) {
             return true
-        } else if let southWest = southWest, southWest.insertObject(object, atPoint: point, checkMinMax: checkMinMax) {
+        } else if let southWest = southWest, southWest.insert(object, checkMinMax: checkMinMax) {
             return true
-        } else if let southEast = southEast, southEast.insertObject(object, atPoint: point, checkMinMax: checkMinMax) {
+        } else if let southEast = southEast, southEast.insert(object, checkMinMax: checkMinMax) {
             return true
         }
 
@@ -109,15 +94,28 @@ final class QuadTree {
 
         if let northWest = northWest {
             objectsInRegion.append(contentsOf: northWest.queryRegion(box, region: region))
-        } else if let northEast = northEast {
+        }
+        if let northEast = northEast {
             objectsInRegion.append(contentsOf: northEast.queryRegion(box, region: region))
-        } else if let southWest = southWest{
+        }
+        if let southWest = southWest{
             objectsInRegion.append(contentsOf: southWest.queryRegion(box, region: region))
-        } else if let southEast = southEast {
+        }
+        if let southEast = southEast {
             objectsInRegion.append(contentsOf: southEast.queryRegion(box, region: region))
         }
 
         return objectsInRegion
+    }
+
+    func boundingBoxForCoordinates(_ northEastCoord: CLLocationCoordinate2D, southWestCoord: CLLocationCoordinate2D) -> BoundingBox {
+        let minLat: CLLocationDegrees = southWestCoord.latitude
+        let maxLat: CLLocationDegrees = northEastCoord.latitude
+        
+        let minLong: CLLocationDegrees = southWestCoord.longitude
+        let maxLong: CLLocationDegrees = northEastCoord.longitude
+        
+        return BoundingBox(minX: CGFloat(minLong), minY: CGFloat(minLat), maxX: CGFloat(maxLong), maxY: CGFloat(maxLat))
     }
 
     private func subdivide() {
@@ -131,29 +129,29 @@ final class QuadTree {
             return
         }
         
-        let midX: CGFloat = (box.xf + box.x0) / 2.0
-        let midY: CGFloat = (box.yf + box.y0) / 2.0
+        let midX: CGFloat = (box.maxX + box.minX) / 2.0
+        let midY: CGFloat = (box.maxY + box.minY) / 2.0
         
-        northWest?.boundingBox = BoundingBox(x0: box.x0, y0: midY, xf: midX, yf: box.yf)
-        northEast?.boundingBox = BoundingBox(x0: midX, y0: midY, xf: box.xf, yf: box.yf)
-        southWest?.boundingBox = BoundingBox(x0: box.x0, y0: box.y0, xf: midX, yf: midY)
-        southEast?.boundingBox = BoundingBox(x0: midX, y0: box.y0, xf: box.xf, yf: midY)
+        northWest?.boundingBox = BoundingBox(minX: box.minX, minY: midY, maxX: midX, maxY: box.maxY)
+        northEast?.boundingBox = BoundingBox(minX: midX, minY: midY, maxX: box.maxX, maxY: box.maxY)
+        southWest?.boundingBox = BoundingBox(minX: box.minX, minY: box.minY, maxX: midX, maxY: midY)
+        southEast?.boundingBox = BoundingBox(minX: midX, minY: box.minY, maxX: box.maxX, maxY: midY)
     }
 }
 
 struct BoundingBox {
-    let x0, y0, xf, yf: CGFloat
+    let minX, minY, maxX, maxY: CGFloat
 }
 
 extension BoundingBox {
     func contains(_ point: Coordinate) -> Bool {
-        x0 <= point.x && point.x <= xf &&
-        y0 <= point.y && point.y <= yf
+        minX <= point.x && point.x <= maxX &&
+        minY <= point.y && point.y <= maxY
     }
 
     func intersects(with box: BoundingBox) -> Bool {
-        x0 <= box.xf && xf >= box.x0 &&
-        y0 <= box.yf && yf >= y0
+        minX <= box.maxX && maxX >= box.minX &&
+        minY <= box.maxY && maxY >= minY
     }
 }
 

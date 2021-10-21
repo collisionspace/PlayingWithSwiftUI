@@ -13,7 +13,7 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
-            BikeShareMap(annotations: $repo.annotations)
+            BikeShareMap(cities: $repo.cities)
             .ignoresSafeArea()
 
             HStack {
@@ -31,7 +31,7 @@ struct ContentView: View {
                 }
             }.padding(.trailing, 16).padding(.top, 16)
         }.modalSheet(showSheet: $showSheet) {
-            ShareList(annotations: $repo.annotations)
+            ShareList(cities: $repo.cities)
         }.task {
             await repo.getBikeShareCities()
         }
@@ -46,11 +46,11 @@ struct ContentView_Previews: PreviewProvider {
 
 struct ShareList: View {
 
-    @Binding var annotations: [BikeShareAnnotation]
+    @Binding var cities: [City]
 
     var body: some View {
-        List(annotations) {
-            Text($0.city.name)
+        List(cities) {
+            Text($0.name)
         }
     }
 }

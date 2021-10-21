@@ -10,22 +10,24 @@ import SwiftUI
 import MapKit
 
 struct MapFactory {
+    
     enum MapProvider {
         case apple
         case google
         case mapbox
     }
 
-    static func createView(provider: MapProvider, mapRect: Binding<MapRect>, visibleAnnotationItems: [BikeShareAnnotation]) -> AnyView {
+    static func createView(provider: MapProvider, mapRect: Binding<MapRect>, visibleAnnotationItems: Binding<[ClusteredAnnotation]>) -> AnyView {
         switch provider {
         case .apple:
             return AnyView(
-                Map(mapRect: mapRect.toMKMapRect(), annotationItems: visibleAnnotationItems) { item in
-                    MapAnnotation(coordinate: item.city.coordinate) {
-                        Image(systemName: "bicycle")
-                        .onTapGesture(count: 1, perform: {
-                            print("IT WORKS")
-                      })
+                Map(mapRect: mapRect.toMKMapRect(), annotationItems: visibleAnnotationItems.wrappedValue) { item in
+                    MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: item.point.y, longitude: item.point.x)) {
+                        Text("\(item.clusterCount)")
+                            .font(.title3)
+                            .fontWeight(.bold)
+                            .foregroundColor(.red)
+                            .frame(width: 100, height: 100, alignment: .center)
                     }
                 }
             )
@@ -46,11 +48,23 @@ extension Binding where Value == MapRect {
     }
 }
 
+extension Binding where Value == MapCoordinateRegion {
+    func toMKCoordinateRegion() -> Binding<MKCoordinateRegion> {
+        Binding<MKCoordinateRegion>(
+            get: wrappedValue.toMKCoordinateRegion,
+            set: {
+                self.wrappedValue = MapCoordinateRegion(region: $0)
+            }
+        )
+    }
+}
+
 struct MapRect {
     let origin: MapPoint
     let size: MapSize
 
     static let zero = MapRect(origin: .zero, size: .zero)
+    static let world = MapRect(mkMapRect: .world)
 }
 
 extension MapRect {
@@ -66,9 +80,8 @@ extension MapRect {
         )
     }
 
-    // TODO: Instead of transforming to mapkit look at writing own
     func contains(_ point: MapPoint) -> Bool {
-        toMKMapRect().contains(point.toMKMapPoint())
+        toMKMapRect().contains(MKMapPoint(CLLocationCoordinate2D(latitude: point.y, longitude: point.x)))
     }
 }
 
@@ -105,5 +118,41 @@ extension MapSize {
 
     func toMKMapSize() -> MKMapSize {
         MKMapSize(width: width, height: height)
+    }
+}
+
+struct MapCoordinateRegion {
+    let center: MapCoordinate
+    let span: MapSpan
+
+    static let zero = MapCoordinateRegion(center: .zero, span: .zero)
+}
+
+extension MapCoordinateRegion {
+    init(region: MKCoordinateRegion) {
+        self.center = MapCoordinate(clCoordinate: region.center)
+        self.span = MapSpan(span: region.span)
+    }
+
+    func toMKCoordinateRegion() -> MKCoordinateRegion {
+        MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: center.y, longitude: center.x), span: span.toMKCoordinateSpan())
+    }
+}
+
+struct MapSpan {
+    let latitudeDelta: Double
+    let longitudeDelta: Double
+
+    static let zero = MapSpan(latitudeDelta: .zero, longitudeDelta: .zero)
+}
+
+extension MapSpan {
+    init(span: MKCoordinateSpan) {
+        self.latitudeDelta = span.latitudeDelta
+        self.longitudeDelta = span.longitudeDelta
+    }
+
+    func toMKCoordinateSpan() -> MKCoordinateSpan {
+        MKCoordinateSpan(latitudeDelta: latitudeDelta, longitudeDelta: longitudeDelta)
     }
 }

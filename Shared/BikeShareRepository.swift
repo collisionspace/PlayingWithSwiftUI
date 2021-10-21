@@ -9,17 +9,14 @@ import Foundation
 import MapKit
 
 final class BikeShareRepository: ObservableObject {
-   @Published var annotations: [BikeShareAnnotation]
+   @Published var cities: [City]
 
     private var response: BikeShareCityResponse = BikeShareCityResponse(shares: []) {
         willSet {
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else {
-                    return
-                }
-                self.annotations = self.response
+            // Set to unowned as with the current setup this will never get dealloc
+            DispatchQueue.main.async { [unowned self] in
+                self.cities = self.response
                     .shares
-                    .lazy
                     .map { City(
                         coordinate: CLLocationCoordinate2D(
                             latitude: $0.location.latitude,
@@ -27,7 +24,6 @@ final class BikeShareRepository: ObservableObject {
                         ),
                         name: $0.name
                     )}
-                    .map { BikeShareAnnotation(city: $0) }
             }
         }
     }
@@ -37,7 +33,7 @@ final class BikeShareRepository: ObservableObject {
 
     init(worker: BikeShareService = BikeShareWorker()) {
         self.worker = worker
-        self.annotations = []
+        self.cities = []
     }
 
     func getBikeShareCities() async {
@@ -45,8 +41,8 @@ final class BikeShareRepository: ObservableObject {
        switch bikes {
        case let .success(bikeShares):
            response = bikeShares
-       case let .failure(error):
-           response = BikeShareCityResponse(shares: [])
+       case .failure:
+           break
        }
    }
 }
